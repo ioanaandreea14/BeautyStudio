@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BeautyStudio - Mockup</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="app-header">
+    <h1>BeautyStudio</h1>
+    <p>Organize and track your favorite cosmetics and skincare products.</p>
+    <p class="app-count">3 items, 2 active</p>
+</header>
+
+<main class="container">
+    <section class="panel">
+        <h2>Add Product</h2>
+        <form class="item-form">
+            <label>Product Name
+                <input type="text" name="productName" placeholder="Ex: MAC Glow Play Blush" required />
+            </label>
+
+            <label>Target Area
+                <select name="targetArea">
+                    <option value="face">Face</option>
+                    <option value="eyes">Eyes</option>
+                    <option value="body">Body</option>
+                    <option value="hair">Hair</option>
+                </select>
+            </label>
+
+            <button type="submit">Add Product</button>
+        </form>
+    </section>
+
+    <section class="panel">
+        <h2>My Collection</h2>
+        <!-- When list is empty: <p class="empty">No products in your list.</p> -->
+        <ul class="item-list">
+            <li class="item-card">
+                <div>
+                    <h3>MAC Glow Play Blush</h3>
+                    <span class="badge badge-face">Face</span>
+                </div>
+                <span class="status">Active</span>
+            </li>
+
+            <li class="item-card done">
+                <div>
+                    <h3>NYX Ultimate Shadow Palette</h3>
+                    <span class="badge badge-eyes">Eyes</span>
+                </div>
+                <span class="status">Finished</span>
+            </li>
+
+            <li class="item-card">
+                <div>
+                    <h3>Kerastase Nutritive Mask</h3>
+                    <span class="badge badge-hair">Hair</span>
+                </div>
+                <span class="status">Active</span>
+            </li>
+        </ul>
+    </section>
+</main>
+
+<footer class="app-footer">
+    <p>Web Technologies Project</p>
+</footer>
+</body>
+</html>
