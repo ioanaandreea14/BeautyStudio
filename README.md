@@ -26,11 +26,16 @@ Open `index.html` in a browser. No build step, no server.
 
 Details per stage: see the `ai-log/` folder.
 
+### Stage 2: data logic
+Plain JavaScript, no DOM. `products.js` holds the array and the functions that read and change it. Results are printed in the browser console (F12).
+
 ## Status
 - [x] Stage 1: static mockup
-- [ ] Stage 2: data logic in JavaScript
+- [x] Stage 2: data logic in JavaScript
+- [ ] Stage 3: Vite and React project
 
 ## Checklist Table
+## Stage 1
 | ID    | Requirement                                          | Where (permalink)                                                                                                                                                                                                                                                            | How to check     |
 |-------|------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
 | S1-R1 | README: description, fields, sample data, how to run | [README.md#L1-L20](https://github.com/ioanaandreea14/BeautyStudio/blob/465f66e0c2333f65ecb3a061c788cb7811a1226f/README.md?plain=1#L1-L20)                                                                                                                                    | read             |
@@ -41,3 +46,5 @@ Details per stage: see the `ai-log/` folder.
 | S1-R6 | 2 columns on desktop, 1 under 700px                  | [style.css#L60-L68](https://github.com/ioanaandreea14/BeautyStudio/blob/465f66e0c2333f65ecb3a061c788cb7811a1226f/style.css#L60-L68), [style.css#L187-L191](https://github.com/ioanaandreea14/BeautyStudio/blob/465f66e0c2333f65ecb3a061c788cb7811a1226f/style.css#L187-L191) | resize < 700px   |
 | S1-R7 | visible focus, readable dark theme                   | [style.css#L182-L185](https://github.com/ioanaandreea14/BeautyStudio/blob/465f66e0c2333f65ecb3a061c788cb7811a1226f/style.css#L182-L185), [style.css#L21-L30](https://github.com/ioanaandreea14/BeautyStudio/blob/465f66e0c2333f65ecb3a061c788cb7811a1226f/style.css#L21-L30) | Tab; dark mode   |
 | S1-R8 | commit "Stage 1" pushed                              | [Commit link](https://github.com/ioanaandreea14/BeautyStudio/commit/465f66e0c2333f65ecb3a061c788cb7811a1226f)                                                                                                                                                                | check commits    |
+
+## Stage 2
