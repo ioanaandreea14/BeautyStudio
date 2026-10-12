@@ -52,6 +52,11 @@ function addProduct(list, productName, targetArea, category = "General", user = 
         return list;
     }
 
+    if (!TARGET.includes(targetArea)) {
+        console.log(`Eroare validare: Zonă invalidă '${targetArea}'. Valori permise: ${TARGET.join(", ")}`);
+        return list;
+    }
+
     const newProduct = {
         id: getNextId(list),
         productName: cleanName,
