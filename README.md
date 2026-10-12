@@ -26,7 +26,7 @@ Open `index.html` in a browser. No build step, no server.
 
 Details per stage: see the `ai-log/` folder.
 
-### Stage 2: data logic
+## Stage 2: data logic
 Plain JavaScript, no DOM. `products.js` holds the array and the functions that read and change it. Results are printed in the browser console (F12).
 
 ## Status
@@ -48,3 +48,12 @@ Plain JavaScript, no DOM. `products.js` holds the array and the functions that r
 | S1-R8 | commit "Stage 1" pushed                              | [Commit link](https://github.com/ioanaandreea14/BeautyStudio/commit/465f66e0c2333f65ecb3a061c788cb7811a1226f)                                                                                                                                                                | check commits    |
 
 ## Stage 2
+| ID    | Requirement                              | Where (permalink)                                                                                                                                                                        | How to check         |
+|-------|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|
+| S2-R1 | JS file linked, logs on page load        | [index.html#L71](https://github.com/ioanaandreea14/BeautyStudio/blob/46dbb272f69cf571dbda13b77b620c42b9f5c34f/index.html#L71)                                                            | open page, F12       |
+| S2-R2 | 3+ items with id, name, state, tag       | [products.js#L1-L26](https://github.com/ioanaandreea14/BeautyStudio/blob/46dbb272f69cf571dbda13b77b620c42b9f5c34f/products.js#L1-L26)                                                    | read                 |
+| S2-R3 | list, count, search, add, toggle, delete | [products.js#L30-L73](https://github.com/ioanaandreea14/BeautyStudio/blob/46dbb272f69cf571dbda13b77b620c42b9f5c34f/products.js#L30-L73)                                                  | console output       |
+| S2-R4 | add rejects empty name and invalid tag   | [products.js#L50-L58](https://github.com/ioanaandreea14/BeautyStudio/blob/e2f8aeae7d19340fd0e88c0a6d00bdc8c1738cc6/products.js#L50-L58)                                                  | last 2 console lines |
+| S2-R5 | original array unchanged after add       | [products.js#L88](https://github.com/ioanaandreea14/BeautyStudio/blob/e2f8aeae7d19340fd0e88c0a6d00bdc8c1738cc6/products.js#L88)                                                          | console line         |
+| S2-R6 | README Stage 2 section + AI log          | [README.md](https://github.com/ioanaandreea14/BeautyStudio/blob/main/README.md), [ai-log/etapa-02.md](https://github.com/ioanaandreea14/BeautyStudio/blob/main/ai%20-%20log/etapa-02.md) | read                 |
+| S2-R7 | commit "Stage 2" pushed                  | [Commit link](https://github.com/ioanaandreea14/BeautyStudio/commit/46dbb272f69cf571dbda13b77b620c42b9f5c34f)                                                                            | commit history       |
