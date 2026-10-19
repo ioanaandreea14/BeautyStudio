@@ -1,3 +1,7 @@
+import React from 'react';
+import ProductList from './components/ProductList.jsx';
+import './App.css';
+
 const products = [
   {
     id: 1,
@@ -41,8 +45,7 @@ export default function App() {
         <main className="container">
           <section className="panel">
             <h2>My Products</h2>
-            {/* Temporary: raw JSON data; rendering components will be added in Stage 4 */}
-            <pre>{JSON.stringify(products, null, 2)}</pre>
+            <ProductList products={products} />
           </section>
         </main>
       </>

@@ -33,6 +33,12 @@ Plain JavaScript, no DOM. `products.js` holds the array and the functions that r
 The app now lives in `frontend/`, built with Vite. The data from stage 2
 moved into the main component; the list is still printed raw.
 
+## Stage 4: components
+The list is rendered from the data, through two components:
+- `TaskList` receives the whole array and renders one card per item
+- `TaskCard` receives a single item through props and displays it
+
+
 ## How to run
 cd frontend
 npm install
@@ -43,7 +49,8 @@ Then open the address printed in the terminal (http://localhost:5173).
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
-- [ ] Stage 4: 
+- [x] Stage 4: components rendered from data 
+- [ ] Stage 5: local state and event
 
 ## Stage 1 Checklist
 | ID    | Requirement                                          | Where (permalink)                                                                                                                                                                                                                                                            | How to check     |
