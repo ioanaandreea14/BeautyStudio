@@ -7,18 +7,35 @@ const TARGET_AREA_LABELS = {
     Hair: "Hair"
 };
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, onToggleStock, onDeleteProduct }) {
     return (
-        <li className={product.inStock ? "product-card in-stock" : "product-card out-of-stock"}>
-            <div className="product-info">
-                <h3>{product.productName}</h3>
-                <p><strong>Category:</strong> {product.category}</p>
-                <p><strong>Target Area:</strong> {TARGET_AREA_LABELS[product.targetArea] || product.targetArea}</p>
-                <p className="user-tag">Added by: {product.user}</p>
+        <li className={product.inStock ? "item-card" : "item-card done"}>
+            <label className="item-main">
+                <input
+                    type="checkbox"
+                    checked={product.inStock}
+                    onChange={() => onToggleStock(product.id)}
+                />
+                <div className="product-info">
+                    <h3>{product.productName}</h3>
+                    <p className="status">
+                        Category: {product.category} | Target Area:{" "}
+                        <span className={`badge badge-${product.targetArea.toLowerCase()}`}>
+              {TARGET_AREA_LABELS[product.targetArea] || product.targetArea}
+            </span>
+                    </p>
+                </div>
+            </label>
+
+            <div className="item-actions">
+                <button
+                    className="btn-danger"
+                    onClick={() => onDeleteProduct(product.id)}
+                    aria-label={`Delete ${product.productName}`}
+                >
+                    Delete
+                </button>
             </div>
-            <span className={product.inStock ? "status status-in" : "status status-out"}>
-        {product.inStock ? "In Stock" : "Out of Stock"}
-      </span>
         </li>
     );
 }

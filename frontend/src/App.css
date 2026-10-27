@@ -16,10 +16,12 @@
   --badge-eyes: #9c4dcc;
   --badge-body: #009688;
   --badge-hair: #2196f3;
+  --danger: #e74c3c;
 }
 
+/* Etapa 5: Tema sistemului, daca utilizatorul nu a ales explicit tema luminoasa */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #181214;
     --card: #251b1e;
     --text: #f3e9ec;
@@ -29,15 +31,27 @@
   }
 }
 
+/* Etapa 5:  tema aleasă din buton are prioritate față de cea a sistemului */
+:root[data-theme="dark"] {
+  --bg: #181214;
+  --card: #251b1e;
+  --text: #f3e9ec;
+  --muted: #a39397;
+  --border: #3d2c31;
+  --accent-soft: #382027;
+}
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .app-header {
+  position: relative;
   background: var(--accent);
   color: #ffffff;
   text-align: center;
@@ -50,6 +64,27 @@ body {
 
 .app-header p {
   margin: 4px 0;
+}
+
+/* Etapa 5: butonul de comutare a temei, în colțul antetului */
+.theme-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  background: transparent;
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .app-count {
@@ -80,45 +115,6 @@ body {
   font-size: 1.25rem;
 }
 
-.item-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.item-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
-.item-form input,
-.item-form select {
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: var(--bg);
-  color: var(--text);
-  font-size: 1rem;
-}
-
-.item-form button {
-  background: var(--accent);
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.item-form button:hover {
-  background: var(--accent-dark);
-}
-
 .item-list {
   list-style: none;
   padding: 0;
@@ -135,6 +131,7 @@ body {
   padding: 14px 16px;
   border: 1px solid var(--border);
   border-radius: 10px;
+  background: var(--card);
   transition: border-color 0.2s, background-color 0.2s;
 }
 
@@ -144,13 +141,55 @@ body {
 }
 
 .item-card h3 {
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
   font-size: 1rem;
 }
 
+/* Etapa 5: Titlu tăiat când produsul nu mai este în stoc sau sarcina este finalizată */
 .item-card.done h3 {
   text-decoration: line-through;
   color: var(--muted);
+}
+
+/* Etapa 5: Structură pentru checkbox + conținut card */
+.item-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.item-main input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Etapa 5: Butonul de ștergere */
+.btn-danger {
+  border: 1px solid var(--danger);
+  background: transparent;
+  color: var(--danger);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+  background: var(--danger);
+  color: #ffffff;
 }
 
 .status {
@@ -171,6 +210,13 @@ body {
 .badge-eyes { background-color: var(--badge-eyes); }
 .badge-body { background-color: var(--badge-body); }
 .badge-hair { background-color: var(--badge-hair); }
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  padding: 2rem 0;
+}
 
 .app-footer {
   text-align: center;

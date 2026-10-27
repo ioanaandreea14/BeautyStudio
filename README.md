@@ -38,6 +38,12 @@ The list is rendered from the data, through two components:
 - `TaskList` receives the whole array and renders one card per item
 - `TaskCard` receives a single item through props and displays it
 
+## Stage 5: local state and events
+The list lives in React state. Checking and deleting work from the page,
+and the counters in the header follow automatically. A button in the
+header switches between light and dark mode. Changes are lost on refresh,
+which is what stage 6 and stage 10 fix.
+
 
 ## How to run
 cd frontend
@@ -50,7 +56,9 @@ Then open the address printed in the terminal (http://localhost:5173).
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
 - [x] Stage 4: components rendered from data 
-- [ ] Stage 5: local state and event
+- [x] Stage 5: local state and events
+- [ ] Stage 6: loading data from a mock API
+
 
 ## Stage 1 Checklist
 | ID    | Requirement                                          | Where (permalink)                                                                                                                                                                                                                                                            | How to check     |
@@ -97,3 +105,4 @@ Then open the address printed in the terminal (http://localhost:5173).
 | S4-R5 | state changes the card look         | [ProductCard.jsx#L12](https://github.com/ioanaandreea14/BeautyStudio/blob/0d5853dc9fe8a4b59a01805a06cf3178df898343/frontend/src/components/ProductCard.jsx#L12)                                                                                            | toggle `inStock`  |
 | S4-R6 | README Stage 4 section + AI log     | [README.md](https://github.com/ioanaandreea14/BeautyStudio/blob/0d5853dc9fe8a4b59a01805a06cf3178df898343/README.md), [ai-log/etapa-04.md](https://github.com/ioanaandreea14/BeautyStudio/blob/0d5853dc9fe8a4b59a01805a06cf3178df898343/ai-log/etapa-04.md) | read              |
 | S4-R7 | commit "Stage 4" pushed             | [Commit Link](https://github.com/ioanaandreea14/BeautyStudio/commit/0d5853dc9fe8a4b59a01805a06cf3178df898343)                                                                                                                                              | commit history    |
+
