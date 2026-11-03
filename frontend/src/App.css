@@ -1,237 +1,445 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
+/* COLORS */
 :root {
-  --bg: #faf7f8;
-  --card: #ffffff;
-  --text: #2d2426;
-  --muted: #7c6f72;
-  --accent: #b85b74;
-  --accent-dark: #964259;
-  --accent-soft: #f8e8ec;
-  --border: #ebdcd0;
+    color-scheme: light;
+    --bg: #faf5f1;
+    --card: #fffdfb;
+    --text: #49343a;
+    --muted: #987f81;
+    --accent: #a66f79;
+    --accent-dark: #85515d;
+    --accent-soft: #f3e5e2;
+    --border: #ebded8;
+    --success: #71876b;
+    --success-bg: #e8efe5;
+    --danger: #b76e72;
+    --shadow: 0 3px 14px rgba(87, 55, 57, .05);
 
-  --badge-face: #e91e63;
-  --badge-eyes: #9c4dcc;
-  --badge-body: #009688;
-  --badge-hair: #2196f3;
-  --danger: #e74c3c;
+    --badge-face: #B95770;
+    --badge-eyes: #8055A6;
+    --badge-body: #C47745;
+    --badge-hair: #668653;
 }
 
-/* Etapa 5: Tema sistemului, daca utilizatorul nu a ales explicit tema luminoasa */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #181214;
-    --card: #251b1e;
-    --text: #f3e9ec;
-    --muted: #a39397;
-    --border: #3d2c31;
-    --accent-soft: #382027;
-  }
-}
-
-/* Etapa 5:  tema aleasă din buton are prioritate față de cea a sistemului */
+/* DARK THEME */
 :root[data-theme="dark"] {
-  --bg: #181214;
-  --card: #251b1e;
-  --text: #f3e9ec;
-  --muted: #a39397;
-  --border: #3d2c31;
-  --accent-soft: #382027;
+    color-scheme: dark;
+    --bg: #211a1d;
+    --card: #2d2327;
+    --text: #f4e9e8;
+    --muted: #bba4a5;
+    --accent: #d29aa1;
+    --accent-dark: #e0adb1;
+    --accent-soft: #423037;
+    --border: #49383d;
+    --success: #b1c9a8;
+    --success-bg: #344337;
+    --danger: #db9294;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg: #211a1d;
+        --card: #2d2327;
+        --text: #f4e9e8;
+        --muted: #bba4a5;
+        --accent: #d29aa1;
+        --accent-dark: #e0adb1;
+        --accent-soft: #423037;
+        --border: #49383d;
+        --success: #b1c9a8;
+        --success-bg: #344337;
+        --danger: #db9294;
+    }
+}
+
+/* GENERAL */
 body {
-  margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.5;
-  transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", sans-serif;
+    line-height: 1.6;
+    transition: background .3s, color .3s;
 }
 
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.app {
+    min-height: 100vh;
+}
+
+/* HEADER */
 .app-header {
-  position: relative;
-  background: var(--accent);
-  color: #ffffff;
-  text-align: center;
-  padding: 32px 16px;
+    min-height: 72px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
 }
 
-.app-header h1 {
-  margin: 0 0 8px 0;
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent-dark);
+    font: 600 1.4rem Georgia, serif;
+    text-decoration: none;
 }
 
-.app-header p {
-  margin: 4px 0;
+.brand-icon {
+    color: var(--accent);
+    font-size: 1.6rem;
 }
 
-/* Etapa 5: butonul de comutare a temei, în colțul antetului */
-.theme-toggle {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  padding: 6px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 8px;
-  background: transparent;
-  color: #ffffff;
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
+.app-header-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .app-count {
-  font-size: 0.9rem;
-  opacity: 0.9;
+    color: var(--muted);
+    font-size: .82rem;
 }
 
+.theme-toggle {
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--accent-dark);
+    font-size: 1.1rem;
+    transition: background .2s;
+}
+
+.theme-toggle:hover {
+    background: var(--accent-soft);
+}
+
+/* MAIN CONTENT */
 .container {
-  max-width: 1000px;
-  margin: 24px auto;
-  padding: 0 16px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.panel {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-}
-
-.panel h2 {
-  margin-top: 0;
-  margin-bottom: 16px;
-  font-size: 1.25rem;
-}
-
-.item-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.item-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 16px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--card);
-  transition: border-color 0.2s, background-color 0.2s;
-}
-
-.item-card:hover {
-  border-color: var(--accent);
-  background-color: var(--accent-soft);
-}
-
-.item-card h3 {
-  margin: 0 0 4px 0;
-  font-size: 1rem;
-}
-
-/* Etapa 5: Titlu tăiat când produsul nu mai este în stoc sau sarcina este finalizată */
-.item-card.done h3 {
-  text-decoration: line-through;
-  color: var(--muted);
-}
-
-/* Etapa 5: Structură pentru checkbox + conținut card */
-.item-main {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  cursor: pointer;
-  flex: 1;
-}
-
-.item-main input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--accent);
-  cursor: pointer;
-}
-
-.item-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* Etapa 5: Butonul de ștergere */
-.btn-danger {
-  border: 1px solid var(--danger);
-  background: transparent;
-  color: var(--danger);
-  border-radius: 6px;
-  padding: 6px 12px;
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-danger:hover {
-  background: var(--danger);
-  color: #ffffff;
-}
-
-.status {
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-.badge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.badge-face { background-color: var(--badge-face); }
-.badge-eyes { background-color: var(--badge-eyes); }
-.badge-body { background-color: var(--badge-body); }
-.badge-hair { background-color: var(--badge-hair); }
-
-.empty {
-  text-align: center;
-  color: var(--muted);
-  font-style: italic;
-  padding: 2rem 0;
-}
-
-.app-footer {
-  text-align: center;
-  padding: 24px;
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-@media (max-width: 700px) {
-  .container {
+    max-width: 1000px;
+    margin: 24px auto;
+    padding: 0 16px;
+    display: grid;
     grid-template-columns: 1fr;
-  }
+    gap: 24px;
+    align-items: start;
+}
+
+@media (min-width: 700px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* PAGE HEADING */
+.welcome-section {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 0;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 30px;
+}
+
+.welcome-label {
+    margin: 0 0 10px;
+    color: var(--accent);
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.welcome-section h1 {
+    margin: 0;
+    color: var(--text);
+    font: 400 2.3rem Georgia, serif;
+}
+
+.welcome-text {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+/* PRODUCT COLLECTION */
+.collection-section {
+    margin-bottom: 50px;
+}
+
+.collection-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.collection-heading h2 {
+    margin: 0;
+    color: var(--text);
+    font: 400 1.7rem Georgia, serif;
+}
+
+.collection-count {
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--accent-dark);
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* PRODUCT LIST */
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* PRODUCT CARD */
+.product-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-height: 82px;
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+    transition: border-color .2s, background .2s;
+}
+
+.product-card:hover {
+    border-color: var(--accent);
+}
+
+.product-card.out-of-stock {
+    background: var(--accent-soft);
+}
+
+.product-info {
+
+    flex: 1;
+    min-width: 0;
+}
+
+.product-info h3 {
+    margin: 0 0 4px;
+    color: var(--text);
+    font-size: .95rem;
+    font-weight: 600;
+}
+
+.product-card.out-of-stock .product-info h3 {
+    color: var(--muted);
+    text-decoration: line-through;
+}
+
+.product-details {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: .78rem;
+}
+
+.product-category {
+    color: var(--accent-dark);
+    font-weight: 600;
+}
+
+.detail-separator {
+    color: var(--accent);
+}
+
+/* CHECKBOX */
+.product-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+    cursor: pointer;
+}
+
+.product-checkbox input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* PRODUCT ACTIONS */
+.product-actions {
+    display: grid;
+    grid-template-columns: 100px 30px;
+    align-items: center;
+    justify-content: end;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.stock-status {
+    text-align: right;
+    font-size: .76rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.stock-status.available {
+    color: var(--success);
+}
+
+.stock-status.unavailable {
+    color: var(--danger);
+}
+
+.delete-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.delete-button:hover {
+    background: var(--accent-soft);
+    color: var(--danger);
+}
+
+/* EMPTY LIST */
+.empty {
+    padding: 35px 20px;
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* ACCESIBILITATE */
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* BADGES */
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+}
+
+.badge-face {
+    background-color: var(--badge-face);
+}
+
+.badge-eyes {
+    background-color: var(--badge-eyes);
+}
+
+.badge-body {
+    background-color: var(--badge-body);
+}
+
+.badge-hair {
+    background-color: var(--badge-hair);
+}
+
+/* FOOTER */
+.app-footer {
+    text-align: center;
+    padding: 10px 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+    background: var(--card);
+    margin-top: 40px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .app-header {
+        padding: 0 18px;
+    }
+
+    .brand {
+        font-size: 1.15rem;
+    }
+
+    .app-header-nav {
+        gap: 10px;
+    }
+
+    .app-count {
+        font-size: .68rem;
+    }
+
+    .container {
+        padding: 0 17px;
+    }
+
+    .welcome-section {
+        margin: 35px 0;
+    }
+
+    .welcome-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .product-card {
+        gap: 10px;
+        padding: 13px 11px;
+    }
+
+    .product-actions {
+        gap: 8px;
+    }
+
+    .stock-status {
+        font-size: .68rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .app-count {
+        display: none;
+    }
+
+    .product-card {
+        flex-wrap: wrap;
+    }
+
+    .product-actions {
+        margin-left: auto;
+    }
 }
