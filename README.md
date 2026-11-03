@@ -33,6 +33,12 @@ Plain JavaScript, no DOM. `products.js` holds the array and the functions that r
 The app now lives in `frontend/`, built with Vite. The data from stage 2
 moved into the main component; the list is still printed raw.
 
+## How to run
+cd frontend
+npm install
+npm run dev
+Then open the address printed in the terminal (http://localhost:5173).
+
 ## Stage 4: components
 The list is rendered from the data, through two components:
 - `TaskList` receives the whole array and renders one card per item
@@ -44,12 +50,11 @@ and the counters in the header follow automatically. A button in the
 header switches between light and dark mode. Changes are lost on refresh,
 which is what stage 6 and stage 10 fix.
 
-
-## How to run
-cd frontend
-npm install
-npm run dev
-Then open the address printed in the terminal (http://localhost:5173).
+## Stage 6: data from a mock API
+The list is served by json-server from `db.json`. The app fetches it on load
+and shows a loading state and an error state.
+npm run api # terminal 1, http://localhost:3001
+npm run dev # terminal 2, http://localhost:5173
 
 ## Status
 - [x] Stage 1: static mockup
@@ -57,8 +62,8 @@ Then open the address printed in the terminal (http://localhost:5173).
 - [x] Stage 3: Vite and React project
 - [x] Stage 4: components rendered from data 
 - [x] Stage 5: local state and events
-- [ ] Stage 6: loading data from a mock API
-
+- [x] Stage 6: loading data from a mock API
+- [ ] Stage 7: form and validation
 
 ## Stage 1 Checklist
 | ID    | Requirement                                          | Where (permalink)                                                                                                                                                                                                                                                            | How to check     |

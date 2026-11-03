@@ -1,25 +1,49 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductList from './components/ProductList.jsx';
+import { fetchProducts } from './api.js';
 import './App.css';
-
-const INITIAL_PRODUCTS = [
-    { id: 1, productName: "MAC Glow Play Blush", inStock: true, targetArea: "Face", category: "Makeup", user: "Ioana" },
-    { id: 2, productName: "NYX Ultimate Shadow Palette", inStock: false, targetArea: "Eyes", category: "Makeup", user: "Ioana" },
-    { id: 3, productName: "Kerastase Nutritive Mask", inStock: true, targetArea: "Hair", category: "Haircare", user: "Ioana" },
-];
 
 function getInitialTheme() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 export default function App() {
-    const [products, setProducts] = useState(INITIAL_PRODUCTS);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [theme, setTheme] = useState(getInitialTheme);
+
+    useEffect(() => {
+        let ignore = false;
+
+        async function load() {
+            try {
+                const data = await fetchProducts();
+                if (!ignore) {
+                    setProducts(data);
+                }
+            } catch (err) {
+                if (!ignore) {
+                    setError(err.message);
+                }
+            } finally {
+                if (!ignore) {
+                    setLoading(false);
+                }
+            }
+        }
+
+        load();
+
+        return () => {
+            ignore = true;
+        };
+    }, []);
 
     function handleToggleStock(id) {
         setProducts((prevProducts) =>
             prevProducts.map((product) =>
-                product.id === id ? {...product, inStock: !product.inStock} : product
+                product.id === id ? { ...product, inStock: !product.inStock } : product
             )
         );
     }
@@ -32,7 +56,6 @@ export default function App() {
 
     function handleToggleTheme() {
         const nextTheme = theme === "dark" ? "light" : "dark";
-
         setTheme(nextTheme);
         document.documentElement.dataset.theme = nextTheme;
     }
@@ -87,11 +110,21 @@ export default function App() {
                         </span>
                     </div>
 
-                    <ProductList
-                        products={products}
-                        onToggleStock={handleToggleStock}
-                        onDeleteProduct={handleDeleteProduct}
-                    />
+                    {loading && <p className="info">Se încarcă produsele cosmetice...</p>}
+
+                    {error && (
+                        <p className="error">
+                            Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
+                        </p>
+                    )}
+
+                    {!loading && !error && (
+                        <ProductList
+                            products={products}
+                            onToggleStock={handleToggleStock}
+                            onDeleteProduct={handleDeleteProduct}
+                        />
+                    )}
                 </section>
 
             </main>

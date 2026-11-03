@@ -1,0 +1,9 @@
+{
+  "products": [
+    {"id": 1, "productName": "MAC Glow Play Blush", "inStock": true, "targetArea": "Face", "category": "Makeup", "user": "Ioana"},
+    {"id": 2, "productName": "NYX Ultimate Shadow Palette", "inStock": false, "targetArea": "Eyes", "category": "Makeup", "user": "Ioana"},
+    {"id": 3, "productName": "Kerastase Nutritive Mask", "inStock": true, "targetArea": "Hair", "category": "Haircare", "user": "Ioana"},
+    {"id": 4, "productName": "CeraVe Foaming Cleanser", "inStock": true, "targetArea": "Face", "category": "Skincare", "user": "Ioana"},
+    {"id": 5, "productName": "Sol de Janeiro Body Lotion", "inStock": false, "targetArea": "Body", "category": "Bodycare", "user": "Ioana"}
+  ]
+}

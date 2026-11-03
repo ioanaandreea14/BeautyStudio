@@ -386,6 +386,31 @@ input:focus-visible {
     margin-top: 40px;
 }
 
+/* ETAPA 6: STĂRI DE ÎNCĂRCARE ȘI EROARE */
+.info {
+    color: var(--muted);
+    font-style: italic;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.error {
+    color: var(--danger);
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.error code {
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
 /* RESPONSIVE */
 @media (max-width: 600px) {
     .app-header {
